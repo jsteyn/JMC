@@ -1,0 +1,75 @@
+{
+  "MQTTSubscriptions": [
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/PC/temperature",
+      "unit": "°C",
+      "label": "study_t",
+      "colour": "pink",
+      "text": "black",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+    },
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/temperature",
+      "unit": "°C",
+      "label": "cellar_t",
+      "colour": "orange",
+      "text": "black",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+    },
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/humidity",
+      "unit": "%",
+      "label": "cellar_t",
+      "colour": "orange",
+      "text": "black",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
+    },
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/esp8266/temperature",
+      "unit": "°C",
+      "label": "lounge_t",
+      "colour": "gray",
+      "text": "white",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+    },
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/esp8266/humidity",
+      "unit": "%",
+      "label": "lounge_t",
+      "colour": "gray",
+      "text": "white",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
+    }
+
+  ]
+}
