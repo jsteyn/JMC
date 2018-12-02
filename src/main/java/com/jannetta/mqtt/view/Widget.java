@@ -1,7 +1,7 @@
-package view;
+package com.jannetta.mqtt.view;
 
-import controller.SimpleMqttCallBack;
-import model.MQTTSubscription;
+import com.jannetta.mqtt.controller.SimpleMqttCallBack;
+import com.jannetta.mqtt.model.MQTTSubscription;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
@@ -55,12 +55,14 @@ public class Widget extends JPanel {
         lbl_message.setForeground(fg);
         add(lbl_label, BorderLayout.NORTH);
         String imageFilename = mqttSubscription.getImage();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image mqtt = toolkit.getImage(ClassLoader.getSystemResource(imageFilename));
+        System.out.println("FILE IMAGE: " + imageFilename);
         try {
-            image = ImageIO.read(new File(imageFilename));
-            JLabel label = new JLabel(new ImageIcon(image));
+            JLabel label = new JLabel(new ImageIcon(mqtt));
             add(label, BorderLayout.CENTER);
-        } catch (IOException e) {
-            System.out.println("Can't red input file: " + imageFilename);
+        } catch (Exception e) {
+            System.out.println("Can't read input file: " + imageFilename);
             image = null;
         }
         add(lbl_message, BorderLayout.SOUTH);

@@ -2,9 +2,9 @@
   "MQTTSubscriptions": [
     {
       "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
-      "topic": "sensor/study/temperature",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/PC/temperature",
       "unit": "°C",
       "label": "study_t",
       "colour": "pink",
@@ -12,26 +12,12 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "thermometer.png"
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
     },
     {
       "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
-      "topic": "sensor/study/barometric",
-      "unit": "Pa",
-      "label": "study_t",
-      "colour": "pink",
-      "text": "black",
-      "timestamp": true,
-      "width": 150,
-      "height": 150,
-      "image": "barometric100.png"
-    },
-    {
-      "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
+      "address": "88.109.110.195",
+      "port": "2706",
       "topic": "sensor/temperature",
       "unit": "°C",
       "label": "cellar_t",
@@ -40,12 +26,12 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "thermometer.png"
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
     },
     {
       "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
+      "address": "88.109.110.195",
+      "port": "2706",
       "topic": "sensor/humidity",
       "unit": "%",
       "label": "cellar_t",
@@ -54,12 +40,12 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "humidity.png"
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
     },
     {
       "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
+      "address": "88.109.110.195",
+      "port": "2706",
       "topic": "sensor/esp8266/temperature",
       "unit": "°C",
       "label": "lounge_t",
@@ -68,12 +54,12 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "thermometer.png"
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
     },
     {
       "protocol": "tcp",
-      "address": "192.168.1.6",
-      "port": "1883",
+      "address": "88.109.110.195",
+      "port": "2706",
       "topic": "sensor/esp8266/humidity",
       "unit": "%",
       "label": "lounge_t",
@@ -82,7 +68,7 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "humidity.png"
+      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
     }
 
   ]

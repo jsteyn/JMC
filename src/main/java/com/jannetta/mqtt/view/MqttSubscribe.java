@@ -1,8 +1,8 @@
-package view;
+package com.jannetta.mqtt.view;
 
 import com.google.gson.Gson;
-import model.MQTTSubscription;
-import model.Result;
+import com.jannetta.mqtt.model.MQTTSubscription;
+import com.jannetta.mqtt.model.Result;
 import org.apache.commons.cli.*;
 
 import javax.swing.*;
@@ -31,7 +31,6 @@ public class MqttSubscribe {
                 File[] dirs = getDirectory("./");
 
                 for (int i = 0; i < dirs.length; i++) {
-                    System.out.println(dirs[i].getName());
                     try {
                         File file = new File(dirs[i].getCanonicalPath() + "//.lck");
                         file.delete();
@@ -58,14 +57,11 @@ public class MqttSubscribe {
             Gson gson = new Gson();
 
             Result result = gson.fromJson(bufferedReader, Result.class);
-            System.out.println(result.getMQTTSubscriptions().size());
 
             if (result != null) {
 
 
                 for (MQTTSubscription m : result.getMQTTSubscriptions()) {
-                    System.out.println(m.getAddress());
-                    System.out.println(m.getTopic());
                     Widget w = new Widget(m);
                     mainPanel.add(w);
                 }
@@ -133,18 +129,7 @@ public class MqttSubscribe {
         };
 
         File[] files = f.listFiles(textFilter);
-//        for (File file : files) {
-//            if (file.isDirectory()) {
-//                System.out.print("directory:");
-//            } else {
-//                System.out.print("     file:");
-//            }
-//            try {
-//                System.out.println(file.getCanonicalPath());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+
         return files;
     }
 

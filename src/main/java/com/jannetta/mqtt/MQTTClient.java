@@ -3,9 +3,11 @@
  *
  * A Java MQTTClient
  */
+package com.jannetta.mqtt;
+
 public class MQTTClient {
 
     public static void main(String[] args) {
-        System.out.println("");
+        System.out.println("Syntax: java -cp jmc.jar view.MqttSubscribe");
     }
 }

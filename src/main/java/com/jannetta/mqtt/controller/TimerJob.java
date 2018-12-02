@@ -1,4 +1,4 @@
-package controller;
+package com.jannetta.mqtt.controller;
 
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 

@@ -1,6 +1,6 @@
-package view;
+package com.jannetta.mqtt.view;
 
-import controller.TimerJob;
+import com.jannetta.mqtt.controller.TimerJob;
 import org.apache.commons.cli.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 

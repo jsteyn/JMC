@@ -1,9 +1,9 @@
-package controller;
+package com.jannetta.mqtt.controller;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import view.Widget;
+import com.jannetta.mqtt.view.Widget;
 
 public class SimpleMqttCallBack implements MqttCallback {
     Widget widget;
