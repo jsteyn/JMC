@@ -81,6 +81,7 @@ public class MqttSubscribe {
     }
 
     static public void main(String[] args) {
+        System.out.println("Version 0.1 - 2018/10/12");
 
         Options options = new Options();
         Option s = Option.builder("s").hasArg().required().desc("Subscription file in JSON format.").build();

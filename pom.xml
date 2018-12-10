@@ -16,19 +16,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <!--
-                <configuration>
-                    <verbose>true</verbose>
-                    <fork>true</fork>
-                    <executable>C:\Program Files\Java\jdk1.8.0_162\bin\javac.exe</executable>
-                    <compilerVersion></compilerVersion>
-                </configuration>
-                -->
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

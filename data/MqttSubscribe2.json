@@ -4,7 +4,7 @@
       "protocol": "tcp",
       "address": "88.109.110.195",
       "port": "2706",
-      "topic": "sensor/PC/temperature",
+      "topic": "sensor/study/temperature",
       "unit": "°C",
       "label": "study_t",
       "colour": "pink",
@@ -12,7 +12,21 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+      "image": "thermometer.png"
+    },
+    {
+      "protocol": "tcp",
+      "address": "88.109.110.195",
+      "port": "2706",
+      "topic": "sensor/study/barometric",
+      "unit": "Pa",
+      "label": "study_t",
+      "colour": "pink",
+      "text": "black",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "barometric100.png"
     },
     {
       "protocol": "tcp",
@@ -26,7 +40,7 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+      "image": "thermometer.png"
     },
     {
       "protocol": "tcp",
@@ -40,7 +54,7 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
+      "image": "humidity.png"
     },
     {
       "protocol": "tcp",
@@ -54,7 +68,7 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//thermometer.png"
+      "image": "thermometer.png"
     },
     {
       "protocol": "tcp",
@@ -68,7 +82,7 @@
       "timestamp": true,
       "width": 150,
       "height": 150,
-      "image": "/home/campus.ncl.ac.uk/njss3/IdeaProjects/jmc/src/main/resources//humidity.png"
+      "image": "humidity.png"
     }
 
   ]
