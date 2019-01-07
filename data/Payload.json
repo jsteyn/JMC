@@ -1,0 +1,12 @@
+{
+	"Payload":
+	{
+		"Value":"String",
+		"Units":"String",
+		"Description":"String"
+		"Architecture":"String",
+		"IPAddress":"String",
+		"MACAddress":"String"
+	}
+}
+		

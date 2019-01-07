@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class MQTTSubscription {
 
+    @SerializedName("widget")
+    @Expose
+    private String widget;
     @SerializedName("protocol")
     @Expose
     private String protocol;
@@ -41,6 +44,17 @@ public class MQTTSubscription {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("filename")
+    @Expose
+    private String filename;
+
+    public String getWidget() {
+        return widget;
+    }
+
+    public void setWidget(String widget) {
+        this.widget = widget;
+    }
 
     public String getProtocol() {
         return protocol;
@@ -130,11 +144,19 @@ public class MQTTSubscription {
         this.image = image;
     }
 
-    public boolean isTimestap() {
+    public boolean isTimestamp() {
         return timestap;
     }
 
     public void setTimestap(boolean timestap) {
         this.timestap = timestap;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

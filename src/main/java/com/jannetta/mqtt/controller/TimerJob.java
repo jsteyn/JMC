@@ -8,13 +8,15 @@ import java.util.TimerTask;
 
 public class TimerJob extends TimerTask {
     String topic = "sensor/falcon/temperature";
+    String protocol = "tcp";
     String content = "";
     int qos = 2;
-    String broker = "tcp://192.168.1.6:1883";
+    String broker = "192.168.1.6";
+    String port = "1883";
     String clientId = "JavaSample";
     MemoryPersistence persistence = new MemoryPersistence();
 
-    public TimerJob(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content) {
+    public TimerJob(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content, String port) {
         super();
         this.topic = topic;
         this.content = content;
@@ -22,6 +24,7 @@ public class TimerJob extends TimerTask {
         this.broker = broker;
         this.clientId = clientId;
         this.persistence = persistence;
+        this.port = port;
     }
 
     @Override
