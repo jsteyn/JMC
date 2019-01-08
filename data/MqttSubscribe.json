@@ -150,6 +150,36 @@
       "width": 150,
       "height": 150,
       "image": "calendar100.png"
+    },
+    {
+      "widget":"com.jannetta.mqtt.view.BasicWidget",
+      "protocol": "tcp",
+      "address": "192.168.1.6",
+      "port": "1883",
+      "topic": "sensor/esp8266/A0:20:A6:14:52:B9/temperature",
+      "unit": "°C",
+      "label": "Lounge Temperature",
+      "colour": "128,128,0",
+      "text": "255,255,255",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "thermometer.png"
+    },
+    {
+      "widget":"com.jannetta.mqtt.view.BasicWidget",
+      "protocol": "tcp",
+      "address": "192.168.1.6",
+      "port": "1883",
+      "topic": "sensor/esp8266/:20:A6:14:52:B9/humidity",
+      "unit": "%",
+      "label": "Lounge Humidity",
+      "colour": "128,128,0",
+      "text": "255,255,255",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "humidity.png"
     }
 
   ]
