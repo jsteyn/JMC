@@ -12,12 +12,15 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -70,7 +73,12 @@ public class BasicJSONWidget extends Widget  implements ActionListener {
         add(lbl_label, BorderLayout.NORTH);
         String imageFilename = mqttSubscription.getImage();
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image mqtt = toolkit.getImage(ClassLoader.getSystemResource(imageFilename));
+        Image mqtt = null;
+        try {
+            mqtt = ImageIO.read(new URL(imageFilename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             JLabel label = new JLabel(new ImageIcon(mqtt));
             add(label, BorderLayout.CENTER);
