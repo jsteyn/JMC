@@ -15,6 +15,7 @@ import javax.swing.*;
 public abstract class Widget extends JPanel {
     Logger logger = LoggerFactory.getLogger(Widget.class);
     private boolean retained;
+    private String jsonconfig = null;
 
     public abstract void update(String topic, MqttMessage mqttMessage);
 
@@ -52,5 +53,11 @@ public abstract class Widget extends JPanel {
         this.retained = retained;
     }
 
+    public String getJsonconfig() {
+        return jsonconfig;
+    }
 
+    public void setJsonconfig(String jsonconfig) {
+        this.jsonconfig = jsonconfig;
+    }
 }

@@ -66,14 +66,7 @@ public class LoggerWidget extends Widget {
         add(lbl_label, BorderLayout.NORTH);
         String imageFilename = mqttSubscription.getImage();
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image mqtt = toolkit.getImage(ClassLoader.getSystemResource(imageFilename));
-        try {
-            JLabel label = new JLabel(new ImageIcon(mqtt));
-            add(label, BorderLayout.CENTER);
-        } catch (Exception e) {
-            logger.error("Can't read input file: " + imageFilename);
-            image = null;
-        }
+
         add(textArea, BorderLayout.CENTER);
         add(lbl_message, BorderLayout.SOUTH);
         subscribe(mqttSubscription.getTopic(), mqttSubscription.getProtocol() + "://" + mqttSubscription.getAddress() + ":" + mqttSubscription.getPort());

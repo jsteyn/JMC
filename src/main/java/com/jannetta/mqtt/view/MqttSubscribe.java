@@ -1,6 +1,7 @@
 package com.jannetta.mqtt.view;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jannetta.mqtt.model.MQTTSubscription;
 import com.jannetta.mqtt.model.Result;
 import org.apache.commons.cli.*;
@@ -35,6 +36,8 @@ public class MqttSubscribe {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
+                // Delete all paho lock files
+                // Files from current session won't delete because they are open
                 File[] dirs = getDirectory("./");
 
                 for (int i = 0; i < dirs.length; i++) {
@@ -78,7 +81,12 @@ public class MqttSubscribe {
                         Constructor<?> constructor = clazz.getConstructor(MQTTSubscription.class);
                         Object instance = constructor.newInstance(subscription);
                         Widget widget = (Widget) instance;
+                        // get json configuration for displaying as a tooltip
+                        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson2.toJson( subscription);
+                        widget.setToolTipText(json);
                         mainPanel.add(widget);
+
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     } catch (NoSuchMethodException e) {
@@ -145,7 +153,8 @@ public class MqttSubscribe {
      */
     private static void help(Options options) {
         HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(version + "\n"+
+        formatter.printHelp("Java Mqtt Client - JMC\n"
+                + version + "\n"+
                 "java -cp jmc.jar com.jannetta.mqtt.view.MqttSubscribe", options);
     }
 
