@@ -1,6 +1,6 @@
 package com.jannetta.mqtt.view;
 
-import com.jannetta.mqtt.model.MQTTSubscription;
+import com.jannetta.mqtt.model.Subscription;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Class to create a widget that subscribes to a topic on a broker and displays the payload
  */
-public class BasicWidget extends Widget {
+public class BasicWidget extends MQTT_Widget implements ActionListener {
     Logger logger = LoggerFactory.getLogger(BasicWidget.class);
     private JLabel lbl_label = new JLabel();
     private JLabel lbl_message = new JLabel("wait ...");
@@ -26,39 +28,40 @@ public class BasicWidget extends Widget {
     /**
      * A basic widget that displays an icon, location information payload and time of the latest
      * update
-     * @param mqttSubscription The widget configuration read from the JSON configuration file
+     * @param subscription The widget configuration read from the JSON configuration file
      */
-    public BasicWidget(MQTTSubscription mqttSubscription) {
+    public BasicWidget(Subscription subscription) {
         super();
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(mqttSubscription.getWidth(), mqttSubscription.getHeight()));
-        setMaximumSize(new Dimension(mqttSubscription.getWidth(), mqttSubscription.getHeight()));
+        setPreferredSize(new Dimension(subscription.getWidth(), subscription.getHeight()));
+        setMaximumSize(new Dimension(subscription.getWidth(), subscription.getHeight()));
         setBorder(new BevelBorder(BevelBorder.RAISED));
-        lbl_label.setText(mqttSubscription.getLabel());
-        timestamp = mqttSubscription.isTimestamp();
-        unit = mqttSubscription.getUnit();
+        lbl_label.setText(subscription.getLabel());
+        timestamp = subscription.isTimestamp();
+        unit = subscription.getUnit();
         Color bg;
         try {
-            bg = makeColor(mqttSubscription.getColour());
+            bg = makeColor(subscription.getColour());
         } catch (Exception e) {
             logger.error("Background colour not defined.");
             bg = null;
         }
         Color fg;
         try {
-            //Field field = Color.class.getField(mqttSubscription.getText());
-            fg = makeColor(mqttSubscription.getText());
+            //Field field = Color.class.getField(subscription.getText());
+            fg = makeColor(subscription.getText());
         } catch (Exception e) {
             fg = null;
             logger.error("Foreground colour not defined.");
         }
         setBackground(bg);
+        add(lbl_message, BorderLayout.SOUTH);
         lbl_label.setForeground(fg);
-        lbl_message.setForeground(fg);
         add(lbl_label, BorderLayout.NORTH);
-        String imageFilename = mqttSubscription.getImage();
+        String imageFilename = subscription.getImage();
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image mqtt = toolkit.getImage(ClassLoader.getSystemResource(imageFilename));
+
         try {
             JLabel label = new JLabel(new ImageIcon(mqtt));
             add(label, BorderLayout.CENTER);
@@ -67,7 +70,9 @@ public class BasicWidget extends Widget {
             image = null;
         }
         add(lbl_message, BorderLayout.SOUTH);
-        subscribe(mqttSubscription.getTopic(), mqttSubscription.getProtocol() + "://" + mqttSubscription.getAddress() + ":" + mqttSubscription.getPort());
+        subscribe(subscription.getTopic(), subscription.getProtocol() +
+                        "://" + subscription.getAddress() + ":" + subscription.getPort(),
+                subscription.getUsername(), subscription.getPassword());
     }
 
     public void setLbl_label(String label) {
@@ -114,4 +119,8 @@ public class BasicWidget extends Widget {
         return "com.jannetta.mqtt.view.BasicWidget";
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+    }
 }

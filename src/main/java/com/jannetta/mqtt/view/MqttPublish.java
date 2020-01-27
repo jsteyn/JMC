@@ -24,6 +24,8 @@ public class MqttPublish {
         String[] file;
         String filename = "";
         String port = "1883";
+        String username = "";
+        char[] password = {};
 
         Options options = new Options();
         Option b = Option.builder("b").hasArg().required().desc("Broker IP address").build();
@@ -32,6 +34,9 @@ public class MqttPublish {
         Option t = Option.builder("t").hasArg().desc("Topic").build();
         Option c = Option.builder("c").hasArg().desc("Client ID").build();
         Option d = Option.builder("d").hasArg().desc("Directory of temperature file").build();
+        Option u = Option.builder("u").hasArg().desc("Username").build();
+        Option P = Option.builder("P").hasArg().desc("Password").build();
+        Option C = Option.builder("C").hasArg().desc("Content").build();
         Option time = Option.builder("time").desc("Publish the time").build();
         Option period = Option.builder("period").hasArg().desc("Period").build();
         Option delay = Option.builder("delay").hasArg().desc("Delay").build();
@@ -41,6 +46,9 @@ public class MqttPublish {
         options.addOption(q);
         options.addOption(t);
         options.addOption(c);
+        options.addOption(u);
+        options.addOption(P);
+        options.addOption(C);
         options.addOption(time);
         options.addOption(period);
         options.addOption(delay);
@@ -72,14 +80,23 @@ public class MqttPublish {
             if (cmd.hasOption("c")) {
                 clientId = cmd.getOptionValue("c");
             }
-            if (cmd.hasOption("time") || !cmd.hasOption("d")) {
+            if (!(cmd.hasOption("C")) && (cmd.hasOption("time") || !cmd.hasOption("d"))) {
                 content = LocalDateTime.now().toString();
+            }
+            if (cmd.hasOption("C")) {
+                content = cmd.getOptionValue("C");
             }
             if (cmd.hasOption("period")) {
                 period_ms = Integer.valueOf(cmd.getOptionValue("period"));
             }
             if (cmd.hasOption("delay")) {
                 delay_ms = Integer.valueOf(cmd.getOptionValue("delay"));
+            }
+            if (cmd.hasOption("u")) {
+                username = cmd.getOptionValue("u");
+            }
+            if (cmd.hasOption("P")) {
+                password = cmd.getOptionValue("P").toCharArray();
             }
             System.out.println("Broker IP: " + broker);
             System.out.println("Port: " + port);
@@ -89,7 +106,9 @@ public class MqttPublish {
             System.out.println("Quality of service: " + qos);
             System.out.println("Topic: " + topic);
             System.out.println("Content: " + content);
-            TimerTask task = new TimerJob(broker, clientId, persistence, qos, topic, content, port);
+            System.out.println("Username: " + username);
+            System.out.println("Password: " + password);
+            TimerTask task = new TimerJob(broker, clientId, persistence, qos, topic, content, port, username, password);
             Timer timer = new Timer();
             timer.schedule(task, delay_ms, period_ms);
 

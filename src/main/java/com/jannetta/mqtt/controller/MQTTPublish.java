@@ -5,25 +5,29 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.slf4j.LoggerFactory;
 
 public class MQTTPublish {
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(MQTTPublish.class);
 
-    public void perform(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content) {
+    public void perform(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content, String username, char[] password) {
         //System.out.println("MQTTPublish performed by thread: " + Thread.currentThread().getName());
         try {
             MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
             MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setUserName(username);
+            connOpts.setPassword(password);
             connOpts.setCleanSession(true);
-            //System.out.println("Connecting to broker: " + broker);
+            logger.trace("Connecting to broker: " + broker);
             sampleClient.connect(connOpts);
-            //System.out.println("Connected");
-            //System.out.println("Publishing message: " + content);
+            logger.trace("Connected");
+            logger.trace("Publishing message: " + content);
             MqttMessage message = new MqttMessage(content.getBytes());
             message.setQos(qos);
             sampleClient.publish(topic, message);
-            //System.out.println("Message published");
+            logger.trace("Message published");
             sampleClient.disconnect();
-            //System.out.println("Disconnected");
+            logger.trace("Disconnected");
         } catch (MqttException me) {
             System.out.println("reason " + me.getReasonCode());
             System.out.println("msg " + me.getMessage());

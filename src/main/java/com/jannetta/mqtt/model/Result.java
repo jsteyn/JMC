@@ -6,16 +6,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Result {
 
-    @SerializedName("MQTTSubscriptions")
+    @SerializedName("Subscriptions")
     @Expose
-    private List<MQTTSubscription> mQTTSubscriptions = null;
+    private List<Subscription> subscriptions = null;
 
-    public List<MQTTSubscription> getMQTTSubscriptions() {
-        return mQTTSubscriptions;
+    public List<Subscription> getsubscriptions() {
+        return subscriptions;
     }
 
-    public void setMQTTSubscriptions(List<MQTTSubscription> mQTTSubscriptions) {
-        this.mQTTSubscriptions = mQTTSubscriptions;
+    public void setMQTTSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 
 }

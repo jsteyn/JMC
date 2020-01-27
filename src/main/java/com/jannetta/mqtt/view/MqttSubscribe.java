@@ -2,7 +2,7 @@ package com.jannetta.mqtt.view;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jannetta.mqtt.model.MQTTSubscription;
+import com.jannetta.mqtt.model.Subscription;
 import com.jannetta.mqtt.model.Result;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ public class MqttSubscribe {
     // private static final Logger logger = LogManager.getLogger(MqttSubscribe.class.getName());
     Logger logger = LoggerFactory.getLogger(MqttSubscribe.class);
 
-    private static String version = "0.2 2018/12/31";
+    private static String version = "0.3 2020/01/25";
     private static String filename = "MQTTSubscribe.json";
     private static JFrame mainFrame = new JFrame("MQTT Dashboard");
     private static JPanel mainPanel = new JPanel();
@@ -71,14 +71,14 @@ public class MqttSubscribe {
             if (result != null) {
                 // For each widget declared in the configuration file
                 // instantiate the widget
-                for (MQTTSubscription subscription : result.getMQTTSubscriptions()) {
+                for (Subscription subscription : result.getsubscriptions()) {
                     // Get the widget type you want to use to display this subscription
                     String widgetType = subscription.getWidget();
                     Class<?> clazz = null;
                     // Instantiate the widget type and add it to the dashboard
                     try {
                         clazz = Class.forName(widgetType);
-                        Constructor<?> constructor = clazz.getConstructor(MQTTSubscription.class);
+                        Constructor<?> constructor = clazz.getConstructor(Subscription.class);
                         Object instance = constructor.newInstance(subscription);
                         Widget widget = (Widget) instance;
                         // get json configuration for displaying as a tooltip

@@ -15,8 +15,10 @@ public class TimerJob extends TimerTask {
     String port = "1883";
     String clientId = "JavaSample";
     MemoryPersistence persistence = new MemoryPersistence();
+    String username = "";
+    char[] password = {};
 
-    public TimerJob(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content, String port) {
+    public TimerJob(String broker, String clientId, MemoryPersistence persistence, int qos, String topic, String content, String port, String username, char[] password) {
         super();
         this.topic = topic;
         this.content = content;
@@ -25,6 +27,8 @@ public class TimerJob extends TimerTask {
         this.clientId = clientId;
         this.persistence = persistence;
         this.port = port;
+        this.username = username;
+        this.password = password;
     }
 
     @Override
@@ -33,7 +37,7 @@ public class TimerJob extends TimerTask {
         System.out.println("Run TimerJob at " + localTime.toString());
 
         MQTTPublish publish = new MQTTPublish();
-        publish.perform(broker, clientId, persistence, qos, topic, content);
+        publish.perform(broker, clientId, persistence, qos, topic, content, username, password);
 
     }
 }
