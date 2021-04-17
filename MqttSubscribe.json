@@ -1,0 +1,38 @@
+{
+  "MQTTSubscriptions": [
+    {
+      "widget":"com.jannetta.mqtt.view.BasicWidget",
+      "protocol": "tcp",
+      "address": "192.168.1.36",
+      "port": "1883",
+      "topic": "42/RPi/astro.pi/temperature",
+      "unit": "°C",
+      "label": "AstroPi",
+      "colour": "255,200,0",
+      "text": "0,0,0",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "thermometer.png",
+      "username": "lagertha",
+      "password": "L8g3rth8"
+    },
+    {
+      "widget":"com.jannetta.mqtt.view.LoggerWidget",
+      "protocol": "tcp",
+      "address": "192.168.1.36",
+      "port": "1883",
+      "topic": "42/RPi/astro.pi/temperature",
+      "unit": "°C",
+      "label": "AstroPi",
+      "colour": "255,200,0",
+      "text": "0,0,0",
+      "timestamp": true,
+      "width": 150,
+      "height": 150,
+      "image": "thermometer.png",
+      "username": "lagertha",
+      "password": "L8g3rth8"
+    }
+  ]
+}

@@ -64,6 +64,7 @@ public class MqttSubscribe {
 
         try {
             // Read Configuration file (JSON)
+            System.out.println(filename);
             BufferedReader bufferedReader = new BufferedReader(new FileReader( filename));
             Gson gson = new Gson();
             Result result = gson.fromJson(bufferedReader, Result.class);
@@ -71,7 +72,7 @@ public class MqttSubscribe {
             if (result != null) {
                 // For each widget declared in the configuration file
                 // instantiate the widget
-                for (Subscription subscription : result.getsubscriptions()) {
+                for (Subscription subscription : result.getSubscriptions()) {
                     // Get the widget type you want to use to display this subscription
                     String widgetType = subscription.getWidget();
                     Class<?> clazz = null;
@@ -100,14 +101,14 @@ public class MqttSubscribe {
                     }
 
                 }
-//                JScrollPane sp = new JScrollPane(mainPanel);
-//                sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//                sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                // JScrollPane sp = new JScrollPane(mainPanel);
+                // sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                // sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
                 mainFrame.add(mainPanel);
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
                 Image mqtt = toolkit.getImage(ClassLoader.getSystemResource("mqtt.png"));
-                int xSize = ((int) toolkit.getScreenSize().getWidth());
-                int ySize = ((int) toolkit.getScreenSize().getHeight());
+                // int xSize = ((int) toolkit.getScreenSize().getWidth());
+                // int ySize = ((int) toolkit.getScreenSize().getHeight());
                 mainFrame.setIconImage(mqtt);
                 mainFrame.pack();
                 mainFrame.setVisible(true);

@@ -1,1 +1,8 @@
 .idea
+*.lck
+target/
+*.log
+.project
+paho*/
+.vscode/
+.classpath

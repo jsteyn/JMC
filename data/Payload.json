@@ -3,7 +3,7 @@
 	{
 		"Value":"String",
 		"Units":"String",
-		"Description":"String"
+		"Description":"String",
 		"Architecture":"String",
 		"IPAddress":"String",
 		"MACAddress":"String"

@@ -6,15 +6,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class Result {
 
-    @SerializedName("Subscriptions")
+    @SerializedName("MQTTSubscriptions")
     @Expose
     private List<Subscription> subscriptions = null;
 
-    public List<Subscription> getsubscriptions() {
+    public void setMQTTSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
+    }
+
+    /**
+     * @return the subscriptions
+     */
+    public List<Subscription> getSubscriptions() {
         return subscriptions;
     }
 
-    public void setMQTTSubscriptions(List<Subscription> subscriptions) {
+    /**
+     * @param subscriptions the subscriptions to set
+     */
+    public void setSubscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
     }
 
