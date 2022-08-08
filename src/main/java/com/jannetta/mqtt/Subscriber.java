@@ -22,8 +22,8 @@ public class Subscriber implements MqttCallback {
     public Subscriber(URI uri) throws MqttException {
         String host = String.format("tcp://%s:%d", uri.getHost(), uri.getPort());
         String[] auth = this.getAuth(uri);
-        String username = "lagertha";
-        String password = "L8g3rth8";
+        String username = "username";
+        String password = "password";
         String clientId = "MQTT-Java-Example";
         if (!uri.getPath().isEmpty()) {
             this.topic = uri.getPath().substring(1);
@@ -75,7 +75,7 @@ public class Subscriber implements MqttCallback {
     }
 
     public static void main(String[] args) throws MqttException, URISyntaxException {
-        Subscriber s = new Subscriber("mqtt://lagertha:L8g3rth8@192.168.1.36");
+        Subscriber s = new Subscriber("mqtt://username:password@ip.ad.dress");
         s.sendMessage("Hello");
         s.sendMessage("Hello 2");
     }
